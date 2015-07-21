@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@beneaththeink/appcore-options": "file:../appcore-options",
+    "debug": "^2.2.0",
+    "underscore": "^1.8.3"
+  }
+}
