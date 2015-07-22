@@ -4,9 +4,6 @@ var debug = require("debug");
 module.exports = function() {
 	// self-awareness
 	if (this.log_levels) return;
-	if (typeof this.get !== "function") {
-		throw new Error("Missing appcore-options dependency.");
-	}
 
 	// add method, properties
 	this.setupLoggers = setupLoggers;
