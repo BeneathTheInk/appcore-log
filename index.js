@@ -16,7 +16,7 @@ module.exports = function() {
 	this.on("mount", this.setupLoggers);
 
 	// log app errors
-	this.on("error", logError);
+	if (this.get("logErrors") !== false) this.on("error", logError);
 
 	// log about app failure
 	this.fail(function() {
@@ -25,13 +25,12 @@ module.exports = function() {
 }
 
 function logError(err) {
-	if (this.state != null && this.get("logErrors") !== false) {
-		var logval;
-		if (typeof err === "string") logval = _.toArray(arguments);
-		else if (err instanceof Error) logval = [ err.stack || err.toString() ];
-		else if (err != null) logval = [ err.message || JSON.stringify(err) ];
-		if (logval) this.log.error.apply(null, logval);
-	}
+	if (this.state == null) return;
+	var logval;
+	if (typeof err === "string") logval = _.toArray(arguments);
+	else if (err instanceof Error) logval = [ err.stack || err.toString() ];
+	else if (err != null) logval = [ err.message || JSON.stringify(err) ];
+	if (logval) this.log.error.apply(null, logval);
 }
 
 function setupLoggers() {
