@@ -4,7 +4,9 @@ var debug = require("debug");
 module.exports = function() {
 	// self-awareness
 	if (this.log_levels) return;
-	this.use(require("@beneaththeink/appcore-options"));
+	if (typeof this.get !== "function") {
+		throw new Error("Missing appcore-options dependency.");
+	}
 
 	// add method, properties
 	this.setupLoggers = setupLoggers;
@@ -53,7 +55,7 @@ function setupLoggers() {
 	log = this.log = debug(fullname);
 
 	// set up each log level
-	_.each(this.log_levels, function(lvl, name) {
+	_.each(this.log_levels, function(name, lvl) {
 		if (lvl < 0) return;
 		log[name.toLowerCase()] = logLevel < 0 || logLevel >= lvl ?
 			debug(fullname + " [" + name + "]") :
