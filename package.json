@@ -1,8 +1,19 @@
 {
 	"name": "@beneaththeink/appcore-log",
-	"version": "0.1.0",
+	"version": "1.0.0",
+	"description": "Cross-platform console logging for Appcore apps.",
+	"private": true,
+	"main": "lib/index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://beneaththeink.git.beanstalkapp.com/appcore.git"
+	},
 	"dependencies": {
 		"debug": "~2.2.0",
 		"underscore": "~1.8.3"
+	},
+	"devDependencies": {
+		"@beneaththeink/appcore": "~3.0.0",
+		"tape": "~4.0.1"
 	}
 }
