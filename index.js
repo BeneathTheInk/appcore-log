@@ -1,9 +1,17 @@
 var _ = require("underscore");
 var debug = require("debug");
+var assignProps = require("assign-props");
 
 module.exports = function() {
 	// self-awareness
 	if (this.log_levels) return;
+
+	// add app name
+	this.defaults({ name: "app" });
+	assignProps(this, {
+		name: getName,
+		fullname: fullname
+	});
 
 	// add method, properties
 	this.setupLoggers = setupLoggers;
@@ -22,6 +30,20 @@ module.exports = function() {
 	this.fail(function() {
 		this.log("Errors preventing startup.");
 	});
+};
+
+function getName() { return this.get("name"); }
+function fullname() {
+	var fname = this.name;
+	var app = this.parent;
+
+	// get the full name by look up the parents
+	while (app != null) {
+		fname = app.name + ":" + fname;
+		app = app.parent;
+	}
+
+	return fname;
 }
 
 function logError(err) {
