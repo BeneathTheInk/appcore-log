@@ -1,11 +1,18 @@
 {
-	"name": "@beneaththeink/appcore-log",
+	"name": "appcore-log",
 	"version": "2.0.0",
 	"description": "Cross-platform console logging for Appcore apps.",
-	"private": true,
+	"author": "Beneath the Ink <info@beneaththeink.com>",
+	"contributors": [
+		{
+			"name": "Tyler Johnson",
+			"email": "tyler@beneaththeink.com",
+			"url": "http://github.com/tyler-johnson"
+		}
+	],
 	"repository": {
 		"type": "git",
-		"url": "https://beneaththeink.git.beanstalkapp.com/appcore.git"
+		"url": "https://github.com/BeneathTheInk/appcore-log.git"
 	},
 	"scripts": {
 		"test": "node test.js"
@@ -18,5 +25,11 @@
 	"devDependencies": {
 		"@beneaththeink/appcore": "4.x",
 		"tape": "~4.0.1"
-	}
+	},
+	"license": "MIT",
+	"keywords": [
+		"appcore",
+		"log",
+		"debug"
+	]
 }
