@@ -15,7 +15,9 @@
 		"url": "https://github.com/BeneathTheInk/appcore-log.git"
 	},
 	"scripts": {
-		"test": "node test.js"
+		"lint": "jshint *.js",
+		"test": "node test.js",
+		"prepublish": "npm run lint && npm run test"
 	},
 	"dependencies": {
 		"assign-props": "~1.0.0",
@@ -24,6 +26,7 @@
 	},
 	"devDependencies": {
 		"@beneaththeink/appcore": "4.x",
+		"jshint": "~2.8.0",
 		"tape": "~4.0.1"
 	},
 	"license": "MIT",
